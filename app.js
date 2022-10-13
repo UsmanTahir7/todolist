@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const app = express();
+require("dotenv").config();
 
 
 app.set('view engine', 'ejs');
@@ -9,7 +10,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static("public"))
 
-mongoose.connect("mongodb+srv://usman:allahthebest99@cluster0.kzegnhe.mongodb.net/todolistDB")
+mongoose.connect(process.env.MONGO_DB_URL);
 
 const itemsSchema = {
     name: String
